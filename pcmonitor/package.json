@@ -1,0 +1,17 @@
+{
+  "name": "pcmonitor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "atatus-nodejs": "^1.4.2",
+    "express": "^4.17.1",
+    "express-status-monitor": "^1.3.3",
+    "systeminformation": "^4.34.23"
+  }
+}

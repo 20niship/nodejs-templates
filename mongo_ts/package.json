@@ -1,0 +1,16 @@
+{
+  "name": "server",
+  "main": "build/index.js",
+  "scripts": {
+    "start": "node build/index.js",
+    "test": "nodemon  --exec ts-node index.ts",
+    "clean": "rimraf build/*",
+    "tsc": "tsc",
+    "build": "npm-run-all clean tsc && cp ./view ./build/ -rf"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongo" : "latest"
+  }
+}

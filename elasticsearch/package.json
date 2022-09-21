@@ -1,0 +1,15 @@
+{
+  "name": "elasticsearch",
+  "version": "1.0.0",
+  "description": "## install https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html の内容を見ながら進める。",
+  "main": "index.js",
+  "dependencies": {
+    "elasticsearch": "^16.7.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

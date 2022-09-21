@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <script src="/uploader.js"></script>
+    </head>
+
+<h1>Hello World</h1>
+<p>When file dropped, uploading starts</p>
+
+<div id="drag1"  ondrop="drag(event)" ondragover="allowDrop(event)" style="background-color: aqua;width:500px;height:500px;">DRAG HERE</div>
+<script>
+const allowDrop = (ev) => {
+    ev.preventDefault();
+  }
+  
+  const drag = async(e) => {
+      e.preventDefault();
+      console.log("file dropped")
+      const files = e.dataTransfer.files;
+      const basedir = "hogehoge"
+      console.log(files)
+      await upload(files, basedir);
+      // document.location.reload()
+      return true;
+  }
+
+
+  const upload = async(files, _basedir) => {
+    console.log("UPLOAD!!")
+    const basedir = _basedir || "/"
+    console.log(files.length)
+    for(let i=0; i<files.length; i++){
+      let data = new FormData();
+      console.log(files[i])
+      const new_name = `${basedir}/${files[i].name}`
+
+      data.append("file", files[i]);
+      data.append('basedir', basedir);
+      console.log(data)
+
+    const uploader = new HugeUploader({ endpoint: '/upload/', file: files[i] , postParams:{basedir, name:files[i].name, new_name}});
+
+    // subscribe to events
+    uploader.on('error', (err) => {
+        console.error('Something bad happened', err.detail);
+    });
+
+    uploader.on('progress', (progress) => {
+        console.log(`The upload is at ${progress.detail}%`);
+    });
+
+    uploader.on('finish', (body) => {
+        console.log('yeahhh - last response body:', body);
+    });
+
+    // if you want to pause/resume the upload
+    // uploader.togglePause();
+    }
+  }
+</script>
+</html>
